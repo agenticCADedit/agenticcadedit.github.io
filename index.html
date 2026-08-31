@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="AgenticCADedit: A Stateful, Tool-Mediated Agentic Approach to Multimodal 3D CAD Editing - Sinha, Goschke, Kühn, Kuijper, Weinmann">
+  <meta name="description" content="AgenticCADedit turns multimodal 3D CAD editing into small verifiable actions on a persistent CadQuery session, raising validity from 51% to 94.8% with 66.7% fewer output tokens.">
+  <meta name="keywords" content="CAD editing, agentic AI, multimodal instructions, boundary representation, CadQuery, Model Context Protocol, LLM tool use, 3D solid modeling, machine learning, computer vision">
+  <meta name="author" content="Saptarshi Neil Sinha, Mika Silvan Goschke, Paul Julius Kühn, Arjan Kuijper, Michael Weinmann">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Fraunhofer IGD, Darmstadt">
+  <meta property="og:title" content="AgenticCADedit: A Stateful, Tool-Mediated Agentic Approach to Multimodal 3D CAD Editing">
+  <meta property="og:description" content="AgenticCADedit turns multimodal 3D CAD editing into small verifiable actions on a persistent CadQuery session, raising validity from 51% to 94.8% with 66.7% fewer output tokens.">
+  <!-- TODO: Replace with your actual website URL -->
+  <meta property="og:url" content="https://YOUR_DOMAIN.com/agenticcadedit">
+  <!-- TODO: Create a 1200x630px preview image and update path -->
+  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AgenticCADedit - Research Preview">
+  <meta property="article:published_time" content="2026-08-28T00:00:00.000Z">
+  <meta property="article:author" content="Saptarshi Neil Sinha">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="CAD editing">
+  <meta property="article:tag" content="agentic AI">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- TODO: Replace with your lab/institution Twitter handle -->
+  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
+  <!-- TODO: Replace with first author's Twitter handle -->
+  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
+  <meta name="twitter:title" content="AgenticCADedit: A Stateful, Tool-Mediated Agentic Approach to Multimodal 3D CAD Editing">
+  <meta name="twitter:description" content="AgenticCADedit turns multimodal 3D CAD editing into small verifiable actions on a persistent CadQuery session, raising validity from 51% to 94.8% with 66.7% fewer output tokens.">
+  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta name="twitter:image:alt" content="AgenticCADedit - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="AgenticCADedit: A Stateful, Tool-Mediated Agentic Approach to Multimodal 3D CAD Editing">
+  <meta name="citation_author" content="Sinha, Saptarshi Neil">
+  <meta name="citation_author" content="Goschke, Mika Silvan">
+  <meta name="citation_author" content="Kühn, Paul Julius">
+  <meta name="citation_author" content="Kuijper, Arjan">
+  <meta name="citation_author" content="Weinmann, Michael">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_technical_report_institution" content="arXiv preprint">
+  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
+
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <title>AgenticCADedit: Stateful, Tool-Mediated Multimodal 3D CAD Editing | Fraunhofer IGD</title>
+
+  <!-- Favicon and App Icons -->
+<!--  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">-->
+<!--  <link rel="apple-touch-icon" href="static/images/favicon.ico">-->
+
+  <!-- Critical CSS -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <!-- Non-critical CSS -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ScholarlyArticle",
+      "headline": "AgenticCADedit: A Stateful, Tool-Mediated Agentic Approach to Multimodal 3D CAD Editing",
+      "description": "AgenticCADedit reformulates multimodal 3D CAD editing as stateful, tool-mediated interaction with a persistent CadQuery session, improving validity, instruction following and acceptance on the neuralCAD-Edit benchmark.",
+      "author": [
+        {
+          "@type": "Person",
+          "name": "Saptarshi Neil Sinha",
+          "affiliation": { "@type": "Organization", "name": "Fraunhofer IGD, Darmstadt, Germany" }
+        },
+        {
+          "@type": "Person",
+          "name": "Mika Silvan Goschke",
+          "affiliation": { "@type": "Organization", "name": "Fraunhofer IGD, Darmstadt, Germany" }
+        },
+        {
+          "@type": "Person",
+          "name": "Paul Julius Kühn",
+          "affiliation": { "@type": "Organization", "name": "Fraunhofer IGD, Darmstadt, Germany" }
+        },
+        {
+          "@type": "Person",
+          "name": "Arjan Kuijper",
+          "affiliation": { "@type": "Organization", "name": "TU Darmstadt, Darmstadt, Germany" }
+        },
+        {
+          "@type": "Person",
+          "name": "Michael Weinmann",
+          "affiliation": { "@type": "Organization", "name": "Delft University of Technology, Delft, Netherlands" }
+        }
+      ],
+      "datePublished": "2026-08-28",
+      "publisher": { "@type": "Organization", "name": "arXiv" },
+      "url": "https://YOUR_DOMAIN.com/agenticcadedit",
+      "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+      "keywords": ["CAD editing", "agentic AI", "multimodal instructions", "boundary representation", "CadQuery", "Model Context Protocol", "machine learning", "computer vision"],
+      "abstract": "Computer-aided design is central to industrial manufacturing, and much of a designer's daily work consists of editing existing models from multimodal requests involving speech, sketches, and model interaction. Existing neural CAD approaches focus predominantly on unconditional or text-conditioned generation. The neuralCAD-Edit approach formalizes expert multimodal editing requests, but its iterative baseline refines a complete CAD program across attempts, executing each attempt from the original model in a stateless CAD environment. Every attempt must therefore reconstruct the entire edit from scratch, so partially correct progress is discarded rather than accumulated, and the model can neither inspect the geometry it has just produced nor selectively revert a single faulty operation. We present AgenticCADedit, which turns editing into a sequence of small, verifiable actions on a persistent CAD state instead of a single regenerated program. Rather than emitting one complete program, it applies incremental code steps that each commit to the session, inspects the resulting faces and edges, renders highlighted selections to verify that the intended region was addressed, and reverts individual operations when it was not. Subsequent actions therefore build on the geometry produced by earlier ones. Our approach improves on all metrics for all three evaluated LLMs (open-weight: qwen3.6-27b, gemma4-31b; proprietary: gpt-5.6-luna), with the largest gains for the weakest baseline model, qwen3.6-27b, whose validity rises from 51.0% to 94.8% and acceptance from 1.6% to 12.0%. A token-cost analysis with gpt-5.6-luna further shows 66.7% fewer output tokens than neuralCAD-Edit, while 94.8% of input tokens are served from the prompt cache.",
+      "isAccessibleForFree": true,
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "mainEntity": { "@type": "WebPage", "@id": "https://YOUR_DOMAIN.com/agenticcadedit" },
+      "about": [
+        { "@type": "Thing", "name": "Computer-Aided Design" },
+        { "@type": "Thing", "name": "Agentic Foundation Models" }
+      ]
+    }
+  </script>
+
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Fraunhofer Institute for Computer Graphics Research IGD",
+      "url": "https://www.igd.fraunhofer.de/",
+      "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
+      "sameAs": [
+        "https://twitter.com/YOUR_TWITTER_HANDLE",
+        "https://github.com/YOUR_GITHUB_USERNAME"
+      ]
+    }
+  </script>
+</head>
+<body>
+
+<!-- Scroll to Top Button -->
+<button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- More Works Dropdown -->
+<div class="more-works-container">
+  <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
+    <i class="fas fa-flask"></i>
+    More Works
+    <i class="fas fa-chevron-down dropdown-arrow"></i>
+  </button>
+  <div class="more-works-dropdown" id="moreWorksDropdown">
+    <div class="dropdown-header">
+      <h4>Related Work</h4>
+      <button class="close-btn" onclick="toggleMoreWorks()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="works-list">
+      <a href="https://arxiv.org/abs/2604.16170" class="work-item" target="_blank">
+        <div class="work-info">
+          <h5>neuralCAD-Edit: An Expert Benchmark for Multimodal-Instructed 3D CAD Model Editing</h5>
+          <p>The benchmark of 192 expert multimodal edit requests and the stateless script-refinement baseline we compare against.</p>
+          <span class="work-venue">arXiv 2026</span>
+        </div>
+        <i class="fas fa-external-link-alt"></i>
+      </a>
+      <a href="https://arxiv.org/abs/2412.13810" class="work-item" target="_blank">
+        <div class="work-info">
+          <h5>CAD-Assistant: Tool-Augmented VLLMs as Generic CAD Task Solvers</h5>
+          <p>Tool-augmented vision-language agent for sketch reasoning, autoconstraining and parameterization.</p>
+          <span class="work-venue">2025</span>
+        </div>
+        <i class="fas fa-external-link-alt"></i>
+      </a>
+      <a href="https://arxiv.org/abs/2412.14042" class="work-item" target="_blank">
+        <div class="work-info">
+          <h5>CAD-Recode: Reverse Engineering CAD Code from Point Clouds</h5>
+          <p>Reconstructs executable CadQuery programs from point clouds, motivating the script-based CAD representation.</p>
+          <span class="work-venue">ICCV 2025</span>
+        </div>
+        <i class="fas fa-external-link-alt"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">AgenticCADedit: A Stateful, Tool-Mediated Agentic Approach to Multimodal 3D CAD Editing</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="mailto:saptarshineilsinha@gmail.com" target="_blank">Saptarshi Neil Sinha</a><sup>1*</sup>,</span>
+              <span class="author-block">
+                <a href="mailto:mika.silvan.goschke@igd.fraunhofer.de" target="_blank">Mika Silvan Goschke</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="mailto:julius.kuehn@igd.fraunhofer.de" target="_blank">Paul Julius Kühn</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="mailto:arjan.kuijper@igd.fraunhofer.de" target="_blank">Arjan Kuijper</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="mailto:m.weinmann@tudelft.nl" target="_blank">Michael Weinmann</a><sup>3</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <sup>1</sup>Fraunhofer IGD, Darmstadt, Germany &nbsp;
+                <sup>2</sup>TU Darmstadt, Germany &nbsp;
+                <sup>3</sup>Delft University of Technology, Netherlands
+                <br>arXiv preprint, August 2026
+              </span>
+              <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding author</small></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- TODO: Update with your arXiv paper ID once assigned -->
+<!--                <span class="link-block">-->
+<!--                  <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"-->
+<!--                     class="external-link button is-normal is-rounded is-dark">-->
+<!--                    <span class="icon"><i class="fas fa-file-pdf"></i></span>-->
+<!--                    <span>Paper</span>-->
+<!--                  </a>-->
+<!--                </span>-->
+
+                <!-- TODO: Add supplementary material PDF or remove this block -->
+<!--                <span class="link-block">-->
+<!--                  <a href="static/pdfs/supplementary_material.pdf" target="_blank"-->
+<!--                     class="external-link button is-normal is-rounded is-dark">-->
+<!--                    <span class="icon"><i class="fas fa-file-pdf"></i></span>-->
+<!--                    <span>Supplementary</span>-->
+<!--                  </a>-->
+<!--                </span>-->
+
+                <!-- TODO: Replace with your GitHub repository URL -->
+                <div class="publication-links">
+                  <!-- TODO: Update with your arXiv paper ID once assigned -->
+                  <span class="link-block">
+      <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank" rel="noopener"
+         class="external-link button is-normal is-rounded is-dark">
+        <span class="icon"><i class="ai ai-arxiv"></i></span>
+        <span>arXiv paper link</span>
+      </a>
+    </span>
+
+                  <!-- TODO: Replace with your GitHub repository URL once the code is released -->
+                  <span class="link-block">
+      <a class="external-link button is-normal is-rounded is-dark" disabled
+              title="Code release is planned — check back soon">
+        <span class="icon"><i class="fab fa-github"></i></span>
+        <span>Code (upcoming)</span>
+      </a>
+    </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaser video -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <!-- TODO: Add your teaser video file -->
+        <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
+          <source src="static/videos/mcp_luna_uniform_third_boss_obsidian_v7_clean_input.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          Given a multimodal edit request and input CAD data, a foundation model incrementally edits a persistent CAD state.
+          It can execute code, inspect geometry, render highlighted entities, and undo edits. Once the model declares
+          completion, the result is exported.
+        </h2>
+      </div>
+    </div>
+  </section>
+  <!-- End teaser video -->
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Computer-aided design is central to industrial manufacturing, and much of a designer's daily work consists of
+              editing existing models from multimodal requests involving speech, sketches, and model interaction. Existing
+              neural CAD approaches focus predominantly on unconditional or text-conditioned generation. The neuralCAD-Edit
+              approach formalizes expert multimodal editing requests, but its iterative baseline refines a complete CAD
+              program across attempts, executing each attempt from the original model in a stateless CAD environment. Every
+              attempt must therefore reconstruct the entire edit from scratch, so partially correct progress is discarded
+              rather than accumulated, and the model can neither inspect the geometry it has just produced nor selectively
+              revert a single faulty operation.
+            </p>
+            <p>
+              We present <strong>AgenticCADedit</strong>, which turns editing into a sequence of small, verifiable actions on
+              a persistent CAD state instead of a single regenerated program. Rather than emitting one complete program, it
+              applies incremental code steps that each commit to the session, inspects the resulting faces and edges, renders
+              highlighted selections to verify that the intended region was addressed, and reverts individual operations when
+              it was not. Subsequent actions therefore build on the geometry produced by earlier ones. Our approach improves
+              on all metrics for all three evaluated LLMs (open-weight: qwen3.6-27b, gemma4-31b; proprietary: gpt-5.6-luna),
+              with the largest gains for the weakest baseline model, qwen3.6-27b, whose validity rises from 51.0% to 94.8%
+              and acceptance from 1.6% to 12.0%. A token-cost analysis with gpt-5.6-luna further shows 66.7% fewer output
+              tokens than neuralCAD-Edit, while 94.8% of input tokens are served from the prompt cache.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End paper abstract -->
+
+  <!-- Contributions -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3 has-text-centered">Contributions</h2>
+          <div class="content has-text-justified">
+            <ul>
+              <li>We introduce multimodal editing of existing 3D solids as <strong>stateful incremental interaction</strong>
+                rather than repeated full-program refinement. Each successful edit modifies a persistent CAD state on which
+                subsequent actions operate, avoiding regeneration of the complete edit at every iteration.</li>
+              <li>We design an <strong>editing-oriented MCP tool interface</strong> around a persistent CadQuery session that
+                combines incremental code execution, numerical geometry inspection, face and edge enumeration, rendered
+                verification of selected entities, and explicit state management through undo operations.</li>
+              <li>We <strong>isolate the effect of the interaction paradigm</strong> on the neuralCAD-Edit benchmark, keeping
+                benchmark and evaluation protocol fixed. Our approach improves all metrics for every evaluated open-weight and
+                proprietary model while emitting fewer output tokens, with the largest gains for qwen3.6-27b.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End contributions -->
+
+  <!-- MCP tools table -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">MCP Tools Available During the Agentic Loop</h2>
+      <div class="table-container">
+        <table class="table is-fullwidth is-striped is-hoverable">
+          <thead>
+          <tr><th>Category</th><th>Tool</th><th>Purpose</th><th>Returns</th></tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Edit</td><td><code>run_step</code></td>
+            <td>Executes CadQuery code in the persistent session</td>
+            <td>Inspect summary and program output, or error message with traceback</td>
+          </tr>
+          <tr>
+            <td rowspan="3">Query</td><td><code>inspect</code></td>
+            <td>Basic properties of the current model</td>
+            <td>Face and edge counts, axis-aligned bounding box</td>
+          </tr>
+          <tr>
+            <td><code>list_faces</code></td>
+            <td>Enumerates faces, sorted by area</td>
+            <td>Surface type, area, center, outward normal per face; total count</td>
+          </tr>
+          <tr>
+            <td><code>list_edges</code></td>
+            <td>Enumerates edges, sorted by length</td>
+            <td>Edge type, length, center, radius for circles; total count</td>
+          </tr>
+          <tr>
+            <td>Render</td><td><code>render_views</code></td>
+            <td>Renders selected viewpoints, optionally highlighting faces or edges</td>
+            <td>One image per requested view</td>
+          </tr>
+          <tr>
+            <td rowspan="3">State</td><td><code>export_cad</code></td>
+            <td>Exports the current CAD</td>
+            <td>Confirmation and path to the exported file</td>
+          </tr>
+          <tr>
+            <td><code>undo</code></td>
+            <td>Reverts the last successful edit</td>
+            <td>Updated model summary</td>
+          </tr>
+          <tr>
+            <td><code>reset</code></td>
+            <td>Clears the complete session and edit history</td>
+            <td>Confirmation that the session was reset</td>
+          </tr>
+          <tr>
+            <td>Virtual tool</td><td><code>finish</code></td>
+            <td>Signals that the LLM considers the edit complete</td>
+            <td>Terminates the agentic loop after the current batch of tool calls</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <!-- End MCP tools table -->
+
+  <!-- Results tables -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Results</h2>
+
+      <h3 class="title is-5">Mean over all tasks (N = 192)</h3>
+      <p class="content">Failed or invalid edits are scored as zero. The LLM is given in parentheses.</p>
+      <div class="table-container">
+        <table class="table is-fullwidth is-striped is-narrow">
+          <thead>
+          <tr>
+            <th>edit_user</th><th>validity (%) ↑</th><th>instruction ↑</th><th>quality ↑</th><th>acceptance (%) ↑</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr><td>Human baseline</td><td>100.00</td><td>0.75</td><td>0.75</td><td>82.30</td></tr>
+          <tr><td>neuralCAD-Edit (qwen3.6-27b)</td><td>51.00</td><td>0.17</td><td>0.17</td><td>1.60</td></tr>
+          <tr><td><strong>Ours (qwen3.6-27b)</strong></td><td><strong>94.80</strong></td><td><strong>0.32</strong></td><td><strong>0.39</strong></td><td><strong>12.00</strong></td></tr>
+          <tr><td>neuralCAD-Edit (gemma4-31b)</td><td>40.10</td><td>0.19</td><td>0.15</td><td>2.60</td></tr>
+          <tr><td><strong>Ours (gemma4-31b)</strong></td><td><strong>57.30</strong></td><td><strong>0.23</strong></td><td><strong>0.21</strong></td><td><strong>6.80</strong></td></tr>
+          <tr><td>neuralCAD-Edit (gpt-5.6-luna)</td><td>96.40</td><td>0.57</td><td>0.57</td><td>50.00</td></tr>
+          <tr><td><strong>Ours (gpt-5.6-luna)</strong></td><td><strong>99.00</strong></td><td><strong>0.59</strong></td><td><strong>0.60</strong></td><td><strong>53.60</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="title is-5">Median over successful tasks</h3>
+      <p class="content"><code>n_valid</code> is the number of tasks that produced a valid, gradable CAD output file.</p>
+      <div class="table-container">
+        <table class="table is-fullwidth is-striped is-narrow">
+          <thead>
+          <tr><th>edit_user</th><th>n_valid ↑</th><th>chamfer_dist ↓</th><th>iou ↑</th><th>DINO-sim ↑</th></tr>
+          </thead>
+          <tbody>
+          <tr><td>Human baseline</td><td>192</td><td>2.65</td><td>0.95</td><td>0.99</td></tr>
+          <tr><td>neuralCAD-Edit (qwen3.6-27b)</td><td>98</td><td>4.26</td><td>0.64</td><td>0.53</td></tr>
+          <tr><td><strong>Ours (qwen3.6-27b)</strong></td><td><strong>182</strong></td><td><strong>3.72</strong></td><td><strong>0.71</strong></td><td><strong>0.57</strong></td></tr>
+          <tr><td>neuralCAD-Edit (gemma4-31b)</td><td>77</td><td>9.41</td><td>0.54</td><td>0.62</td></tr>
+          <tr><td><strong>Ours (gemma4-31b)</strong></td><td><strong>110</strong></td><td><strong>8.80</strong></td><td><strong>0.55</strong></td><td><strong>0.65</strong></td></tr>
+          <tr><td>neuralCAD-Edit (gpt-5.6-luna)</td><td>185</td><td>3.15</td><td>0.83</td><td>0.63</td></tr>
+          <tr><td><strong>Ours (gpt-5.6-luna)</strong></td><td><strong>190</strong></td><td><strong>2.98</strong></td><td><strong>0.87</strong></td><td><strong>0.64</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="title is-5">Pairwise comparison on identical task sets</h3>
+      <p class="content">Both rows in a pair use the same LLM, evaluation protocol and task set, so any difference comes from the interaction paradigm alone.</p>
+      <div class="table-container">
+        <table class="table is-fullwidth is-striped is-narrow">
+          <thead>
+          <tr>
+            <th>edit_user</th><th>chamfer dist ↓</th><th>iou ↑</th><th>DINO-sim ↑</th>
+            <th>instruction ↑</th><th>quality ↑</th><th>acceptance (%) ↑</th><th>n_tasks</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr><td>neuralCAD-Edit (qwen3.6-27b)</td><td>66.60</td><td>0.56</td><td>0.59</td><td>0.18</td><td>0.34</td><td>3.20</td><td>95</td></tr>
+          <tr><td><strong>Ours (qwen3.6-27b)</strong></td><td><strong>21.84</strong></td><td><strong>0.60</strong></td><td><strong>0.61</strong></td><td><strong>0.36</strong></td><td><strong>0.42</strong></td><td><strong>15.80</strong></td><td>95</td></tr>
+          <tr><td>neuralCAD-Edit (gemma4-31b)</td><td><strong>58.47</strong></td><td>0.49</td><td>0.60</td><td>0.23</td><td>0.35</td><td>5.60</td><td>71</td></tr>
+          <tr><td><strong>Ours (gemma4-31b)</strong></td><td>78.30</td><td><strong>0.57</strong></td><td><strong>0.61</strong></td><td><strong>0.28</strong></td><td><strong>0.36</strong></td><td><strong>9.90</strong></td><td>71</td></tr>
+          <tr><td>neuralCAD-Edit (gpt-5.6-luna)</td><td>24.38</td><td>0.66</td><td>0.64</td><td>0.58</td><td>0.60</td><td>52.20</td><td>184</td></tr>
+          <tr><td><strong>Ours (gpt-5.6-luna)</strong></td><td><strong>24.21</strong></td><td><strong>0.69</strong></td><td><strong>0.65</strong></td><td><strong>0.60</strong></td><td><strong>0.61</strong></td><td><strong>55.40</strong></td><td>184</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="title is-5">Token cost (gpt-5.6-luna, all 192 tasks)</h3>
+      <div class="table-container">
+        <table class="table is-fullwidth is-striped is-narrow">
+          <thead>
+          <tr><th>System</th><th>Input tokens</th><th>Prompt cache hit</th><th>Output tokens</th><th>API cost</th></tr>
+          </thead>
+          <tbody>
+          <tr><td>neuralCAD-Edit</td><td>99.39 M</td><td>0.2 %</td><td>5.39 M</td><td>$26.30</td></tr>
+          <tr><td><strong>Ours</strong></td><td>301.37 M</td><td><strong>94.8 %</strong></td><td><strong>1.80 M</strong></td><td><strong>$11.00</strong> (−58.2 %)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <!-- End results tables -->
+
+  <section class="section" id="results">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Acceptance by Difficulty and Modality</h2>
+
+      <div class="content has-text-justified">
+        <p>
+          We break down LLM acceptance along two axes: the <em>difficulty</em> of the requested edit and the
+          <em>modality</em> in which the edit is specified, reporting both for the human baseline and for all
+          three model pairs. Acceptance generally decreases with request difficulty, most clearly for the
+          human baseline and our agentic variants. Our approach yields substantial gains for qwen3.6-27b and
+          gpt-5.6-luna across all difficulty levels and for gemma4-31b on easy and medium requests, while hard
+          requests remain particularly challenging for the open-weight models. Interactive and draw-temp
+          requests are the hardest modalities for the open-weight models, probably because cursor motion and
+          transient annotations must be recovered from frame sequences; gpt-5.6-luna handles interaction
+          substantially better, but draw-temp remains its weakest modality. Persistent draw-static annotations
+          reduce this ambiguity and yield the highest acceptance, especially for gpt-5.6-luna. The human
+          baseline stays ahead throughout, so there is clear scope for improvement.
+        </p>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column">
+          <figure class="image">
+            <img src="static/images/AcceptanceByDifficulty.png"
+                 alt="Bar chart of LLM acceptance by request difficulty (easy, medium, hard) for the human baseline, Qwen Script, Qwen MCP, Gemma Script, Gemma MCP, Luna Script and Luna MCP"
+                 loading="lazy"/>
+          </figure>
+          <p class="subtitle is-6 has-text-centered">
+            <b>Acceptance by difficulty.</b> Our agentic session improves acceptance for qwen3.6-27b and
+            gpt-5.6-luna on easy, medium and hard requests, and for gemma4-31b on easy and medium requests.
+            Hard requests remain particularly challenging for the open-weight models.
+          </p>
+        </div>
+
+        <div class="column">
+          <figure class="image">
+            <img src="static/images/AcceptanceByModality.png"
+                 alt="Bar chart of LLM acceptance by modality (text, interactive, draw-temp, draw-static) for the human baseline, Qwen Script, Qwen MCP, Gemma Script, Gemma MCP, Luna Script and Luna MCP"
+                 loading="lazy"/>
+          </figure>
+          <p class="subtitle is-6 has-text-centered">
+            <b>Acceptance by modality.</b> Interactive and draw-temp requests are hardest for the open-weight
+            models, since cursor motion and transient annotations must be recovered from frame sequences.
+            Persistent draw-static annotations reduce this ambiguity and give the highest acceptance,
+            most notably for gpt-5.6-luna.
+          </p>
+        </div>
+      </div>
+
+      <p class="has-text-grey is-size-7 has-text-centered">
+        Modalities: <b>text</b> (instruction only), <b>interactive</b> (cursor motion recovered from frame
+        sequences), <b>draw-temp</b> (transient annotation), <b>draw-static</b> (persistent annotation).
+        <b>Script</b> denotes the neuralCAD-Edit full-program refinement baseline, <b>MCP</b> our stateful
+        tool-mediated session. Acceptance requires both the instruction-following and model-quality rating
+        to be at least 5 out of 7.
+      </p>
+    </div>
+  </section>
+
+  <!-- Image carousel -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item">
+            <!-- TODO: Add figure image (method overview) -->
+            <img src="static/images/pipeline.png" alt="Overview of the AgenticCADedit editing loop" loading="lazy"/>
+            <h2 class="subtitle has-text-centered">
+              Overview of AgenticCADedit: the foundation model decides on an action, executes it in a stateful CAD session,
+              observes the effect, and exports once the exit criteria are reached.
+            </h2>
+          </div>
+<!--          <div class="item">-->
+<!--            &lt;!&ndash; TODO: Add figure image (highlighted edges) &ndash;&gt;-->
+<!--            <img src="static/images/RenderViews.png" alt="Two B-Rep edges highlighted in red for verification" loading="lazy"/>-->
+<!--            <h2 class="subtitle has-text-centered">-->
+<!--              Rendered verification: two edges of the B-Rep selected by the model and highlighted in red.-->
+<!--            </h2>-->
+<!--          </div>-->
+          <div class="item">
+            <!-- TODO: Add figure image (qualitative comparison) -->
+            <img src="static/images/qualtitative.png" alt="Qualitative comparison across easy, medium and hard requests" loading="lazy"/>
+            <h2 class="subtitle has-text-centered">
+              Qualitative comparison across easy, medium and hard editing requests for neuralCAD-Edit and our approach,
+              each instantiated with qwen3.6-27b, gemma4-31b and gpt-5.6-luna.
+            </h2>
+          </div>
+          <div class="item">
+            <!-- TODO: Add figure image (ablation of the agentic session) -->
+            <img src="static/images/stages.png" alt="Intermediate edits of the stateful agentic loop" loading="lazy"/>
+            <h2 class="subtitle has-text-centered">
+              Ablation of the agentic session: intermediate states after each operation (load block, bolt shafts, heads and
+              retainers) compared with the final output of full-program refinement.
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End image carousel -->
+
+  <!-- Video presentation -->
+  <!-- TODO: Replace the YouTube video ID with your presentation, or remove this section -->
+<!--  <section class="hero is-small is-light">-->
+<!--    <div class="hero-body">-->
+<!--      <div class="container">-->
+<!--        <h2 class="title is-3">Video Presentation</h2>-->
+<!--        <div class="columns is-centered has-text-centered">-->
+<!--          <div class="column is-four-fifths">-->
+<!--            <div class="publication-video">-->
+<!--              <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </section>-->
+  <!-- End video presentation -->
+
+  <!-- Video carousel -->
+<!--  <section class="hero is-small">-->
+<!--    <div class="hero-body">-->
+<!--      <div class="container">-->
+<!--        <h2 class="title is-3">Multimodal Edit Requests</h2>-->
+<!--        <p class="content">-->
+<!--          Requests are recorded as videos in which professional designers speak while pointing at, rotating and drawing on the-->
+<!--          model, covering the text, interactive, draw-temp and draw-static modalities of the neuralCAD-Edit benchmark.-->
+<!--        </p>-->
+<!--&lt;!&ndash;        <div id="results-carousel-videos" class="carousel results-carousel">&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="item item-video1">&ndash;&gt;-->
+<!--&lt;!&ndash;            &lt;!&ndash; TODO: Add video file and poster image &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <video poster="" id="video1" controls muted loop height="100%" preload="metadata">&ndash;&gt;-->
+<!--&lt;!&ndash;              <source src="static/videos/mcp_luna_uniform_third_boss_obsidian_v7_clean_input.mp4" type="video/mp4">&ndash;&gt;-->
+<!--&lt;!&ndash;            </video>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="item item-video2">&ndash;&gt;-->
+<!--&lt;!&ndash;            &lt;!&ndash; TODO: Add video file and poster image &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <video poster="" id="video2" controls muted loop height="100%" preload="metadata">&ndash;&gt;-->
+<!--&lt;!&ndash;              <source src="static/videos/carousel2.mp4" type="video/mp4">&ndash;&gt;-->
+<!--&lt;!&ndash;            </video>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="item item-video3">&ndash;&gt;-->
+<!--&lt;!&ndash;            &lt;!&ndash; TODO: Add video file and poster image &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <video poster="" id="video3" controls muted loop height="100%" preload="metadata">&ndash;&gt;-->
+<!--&lt;!&ndash;              <source src="static/videos/carousel3.mp4" type="video/mp4">&ndash;&gt;-->
+<!--&lt;!&ndash;            </video>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </section>-->
+  <!-- End video carousel -->
+
+  <!-- Paper poster -->
+  <!-- TODO: Replace with your poster PDF, or remove this section -->
+<!--  <section class="hero is-small is-light">-->
+<!--    <div class="hero-body">-->
+<!--      <div class="container">-->
+<!--        <h2 class="title">Poster</h2>-->
+<!--        <iframe src="static/pdfs/sample.pdf" width="100%" height="550"></iframe>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </section>-->
+  <!-- End paper poster -->
+
+  <!-- BibTeX citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@article{sinha2026agenticcadedit,
+  title={AgenticCADedit: A Stateful, Tool-Mediated Agentic Approach to Multimodal 3D CAD Editing},
+  author={Sinha, Saptarshi Neil and Goschke, Mika Silvan and K{\"u}hn, Paul Julius and Kuijper, Arjan and Weinmann, Michael},
+  journal={arXiv preprint arXiv:&lt;ARXIV PAPER ID&gt;},
+  year={2026}
+}</code></pre>
+    </div>
+  </section>
+  <!-- End BibTeX citation -->
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
