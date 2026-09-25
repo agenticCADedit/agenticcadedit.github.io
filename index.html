@@ -13,14 +13,19 @@
   <meta name="language" content="English">
 
   <!-- Open Graph / Facebook -->
+   <meta property="og:url" content="https://arxiv.org/abs/2609.29621">
+  ...
+  <meta name="citation_arxiv_id" content="2609.29621">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2609.29621">
+  <meta name="citation_abstract_html_url" content="https://arxiv.org/abs/2609.29621">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Fraunhofer IGD, Darmstadt">
   <meta property="og:title" content="AgenticCADedit: A Stateful, Tool-Mediated Agentic Approach to Multimodal 3D CAD Editing">
   <meta property="og:description" content="AgenticCADedit turns multimodal 3D CAD editing into small verifiable actions on a persistent CadQuery session, raising validity from 51% to 94.8% with 66.7% fewer output tokens.">
   <!-- TODO: Replace with your actual website URL -->
-  <meta property="og:url" content="https://YOUR_DOMAIN.com/agenticcadedit">
+  <!-- <meta property="og:url" content="https://agenticcadedit.github.io.com/agenticcadedit"> -->
   <!-- TODO: Create a 1200x630px preview image and update path -->
-  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <!-- <meta property="og:image" content="https://agenticcadedit.github.io.com/static/images/social_preview.png"> -->
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="AgenticCADedit - Research Preview">
@@ -38,7 +43,7 @@
   <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
   <meta name="twitter:title" content="AgenticCADedit: A Stateful, Tool-Mediated Agentic Approach to Multimodal 3D CAD Editing">
   <meta name="twitter:description" content="AgenticCADedit turns multimodal 3D CAD editing into small verifiable actions on a persistent CadQuery session, raising validity from 51% to 94.8% with 66.7% fewer output tokens.">
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta name="twitter:image" content="https://agenticcadedit.github.io.com/static/images/social_preview.png">
   <meta name="twitter:image:alt" content="AgenticCADedit - Research Preview">
 
   <!-- Academic/Research Specific -->
@@ -50,7 +55,7 @@
   <meta name="citation_author" content="Weinmann, Michael">
   <meta name="citation_publication_date" content="2026">
   <meta name="citation_technical_report_institution" content="arXiv preprint">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
+  <meta name="citation_pdf_url" content="https://agenticcadedit.github.io.com/static/pdfs/paper.pdf">
 
   <!-- Additional SEO -->
   <meta name="theme-color" content="#2563eb">
@@ -133,13 +138,14 @@
       ],
       "datePublished": "2026-08-28",
       "publisher": { "@type": "Organization", "name": "arXiv" },
-      "url": "https://YOUR_DOMAIN.com/agenticcadedit",
-      "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+      "url": "https://arxiv.org/abs/2609.29621",
+
+      "image": "https://agenticcadedit.github.io.com/static/images/pipeline.png",
       "keywords": ["CAD editing", "agentic AI", "multimodal instructions", "boundary representation", "CadQuery", "Model Context Protocol", "machine learning", "computer vision"],
       "abstract": "Computer-aided design is central to industrial manufacturing, and much of a designer's daily work consists of editing existing models from multimodal requests involving speech, sketches, and model interaction. Existing neural CAD approaches focus predominantly on unconditional or text-conditioned generation. The neuralCAD-Edit approach formalizes expert multimodal editing requests, but its iterative baseline refines a complete CAD program across attempts, executing each attempt from the original model in a stateless CAD environment. Every attempt must therefore reconstruct the entire edit from scratch, so partially correct progress is discarded rather than accumulated, and the model can neither inspect the geometry it has just produced nor selectively revert a single faulty operation. We present AgenticCADedit, which turns editing into a sequence of small, verifiable actions on a persistent CAD state instead of a single regenerated program. Rather than emitting one complete program, it applies incremental code steps that each commit to the session, inspects the resulting faces and edges, renders highlighted selections to verify that the intended region was addressed, and reverts individual operations when it was not. Subsequent actions therefore build on the geometry produced by earlier ones. Our approach improves on all metrics for all three evaluated LLMs (open-weight: qwen3.6-27b, gemma4-31b; proprietary: gpt-5.6-luna), with the largest gains for the weakest baseline model, qwen3.6-27b, whose validity rises from 51.0% to 94.8% and acceptance from 1.6% to 12.0%. A token-cost analysis with gpt-5.6-luna further shows 66.7% fewer output tokens than neuralCAD-Edit, while 94.8% of input tokens are served from the prompt cache.",
       "isAccessibleForFree": true,
       "license": "https://creativecommons.org/licenses/by/4.0/",
-      "mainEntity": { "@type": "WebPage", "@id": "https://YOUR_DOMAIN.com/agenticcadedit" },
+      "mainEntity": { "@type": "WebPage", "@id": "https://arxiv.org/abs/2609.29621" }
       "about": [
         { "@type": "Thing", "name": "Computer-Aided Design" },
         { "@type": "Thing", "name": "Agentic Foundation Models" }
@@ -154,7 +160,7 @@
       "@type": "Organization",
       "name": "Fraunhofer Institute for Computer Graphics Research IGD",
       "url": "https://www.igd.fraunhofer.de/",
-      "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
+      "logo": "https://agenticcadedit.github.io.com/static/images/favicon.ico",
       "sameAs": [
         "https://twitter.com/YOUR_TWITTER_HANDLE",
         "https://github.com/YOUR_GITHUB_USERNAME"
@@ -244,7 +250,7 @@
             </div>
 
             <div class="column has-text-centered">
-              <div class="publication-links">
+              <!-- <div class="publication-links"> -->
                 <!-- TODO: Update with your arXiv paper ID once assigned -->
 <!--                <span class="link-block">-->
 <!--                  <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"-->
@@ -264,25 +270,39 @@
 <!--                </span>-->
 
                 <!-- TODO: Replace with your GitHub repository URL -->
-                <div class="publication-links">
-                  <!-- TODO: Update with your arXiv paper ID once assigned -->
-                  <span class="link-block">
-      <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank" rel="noopener"
-         class="external-link button is-normal is-rounded is-dark">
-        <span class="icon"><i class="ai ai-arxiv"></i></span>
-        <span>arXiv paper link</span>
-      </a>
-    </span>
+      <div class="publication-links">
+  <span class="link-block">
+    <a href="https://arxiv.org/abs/2609.29621" target="_blank" rel="noopener"
+       class="external-link button is-normal is-rounded is-dark">
+      <span class="icon"><i class="ai ai-arxiv"></i></span>
+      <span>arXiv</span>
+    </a>
+  </span>
 
-                  <!-- TODO: Replace with your GitHub repository URL once the code is released -->
-                  <span class="link-block">
-      <a class="external-link button is-normal is-rounded is-dark" disabled
-              title="Code release is planned — check back soon">
-        <span class="icon"><i class="fab fa-github"></i></span>
-        <span>Code (upcoming)</span>
-      </a>
-    </span>
-              </div>
+  <span class="link-block">
+    <a href="https://arxiv.org/pdf/2609.29621" target="_blank" rel="noopener"
+       class="external-link button is-normal is-rounded is-dark">
+      <span class="icon"><i class="fas fa-file-pdf"></i></span>
+      <span>Paper (PDF)</span>
+    </a>
+  </span>
+
+       <span class="link-block">
+                 <a href="static/pdfs/supplementary_material.pdf" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                   <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                   <span>Supplementary</span>
+                 </a>
+        </span>
+
+  <span class="link-block">
+    <a class="external-link button is-normal is-rounded is-dark" disabled
+       title="Code release is planned — check back soon">
+      <span class="icon"><i class="fab fa-github"></i></span>
+      <span>Code (upcoming)</span>
+    </a>
+  </span>
+</div>
             </div>
           </div>
         </div>
